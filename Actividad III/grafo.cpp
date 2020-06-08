@@ -96,11 +96,11 @@ void GRAFO::Info_Grafo()
 
 
 
-void GRAFO::MostrarCamino(unsigned s, unsigned i, vector<unsigned> pred)
+void GRAFO::MostrarCamino(unsigned k, unsigned i, vector<unsigned> pred)
 {
-  if (i != s)
+  if (i != k)
   {
-    MostrarCamino(s,pred[i],pred);
+    MostrarCamino(k,pred[i],pred);
     cout << pred[i]+1 << " -> ";
   }
 }
@@ -171,17 +171,13 @@ void GRAFO::Kruskal()
     Aristas.resize(m);
     unsigned k = 0;
     for (unsigned i = 0; i<n; i++)
-    {
         for (unsigned j=0; j<LS[i].size();j++)
-        {
             if (i < LS[i][j].j)
             {
                 Aristas[k].extremo1 = i;
                 Aristas[k].extremo2 = LS[i][j].j;
                 Aristas[k++].peso = LS[i][j].c;
                 }
-        }
-    };
     /*Inicializamos el indice a la cabeza del vector*/
     unsigned head = 0;
     AristaPesada AristaDummy; //Para los intercambios en la ordenacion parcial
